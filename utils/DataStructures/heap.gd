@@ -14,15 +14,15 @@
 
 var heap: Array = [Atom]
 
-@abstract func _percolate_up(index: int) -> void;
-@abstract func _percolate_down(index: int) -> void;
+@abstract func percolate_up(index: int) -> void;
+@abstract func percolate_down(index: int) -> void;
 
 
 ## Pushes an [Atom] to the back of the heap and percolates up.
 ## To modifiy how the heap sotres values implement a custom _percolate_up()
 func push(data: Variant, key: int) -> void:
 	heap.append(Atom.new(data, key))
-	_percolate_up(heap.size() - 1)
+	percolate_up(heap.size() - 1)
 
 
 ## Pulls the root atom off the heap, rebalances the heap and returns the item in the atom.
@@ -34,7 +34,7 @@ func pop() -> Variant:
 	
 	var min_val = heap[0]
 	heap[0] = heap.pop_back()
-	_percolate_down(0)
+	percolate_down(0)
 	return min_val
 
 
