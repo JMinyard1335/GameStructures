@@ -12,10 +12,31 @@
 ## _percolate_up, moves a node from the last position up the heap balancing it.[br]
 ## _percolate_down, Moves a node from the root down the heap balancing it.
 
-var heap: Array = []
+var heap: Array = [Atom]
 
-@abstract func push(data: Variant, key: int) -> void;
-@abstract func pop() -> Variant;
+@abstract func _percolate_up(index: int) -> void;
+@abstract func _percolate_down(index: int) -> void;
+
+
+## Pushes an [Atom] to the back of the heap and percolates up.
+## To modifiy how the heap sotres values implement a custom _percolate_up()
+func push(data: Variant, key: int) -> void:
+	heap.append(Atom.new(data, key))
+	_percolate_up(heap.size() - 1)
+
+
+## Pulls the root atom off the heap, rebalances the heap and returns the item in the atom.
+## To change how the heap is balanced implement your own _percolate_down()
+func pop() -> Variant:
+	if is_empty():
+		push_warning("Trying to Pop from an empty Min Heap, returning null")
+		return null
+	
+	var min_val = heap[0]
+	heap[0] = heap.pop_back()
+	_percolate_down(0)
+	return min_val
+
 
 ## Grabs the data at the root or returns null after pushing a warning.
 ## Runs in O(1), Good if you dont want to change the structure of the heap.
@@ -24,6 +45,7 @@ func peek() -> Variant:
 		push_warning("Heap Structure is trying to peak an empty heap, returning null.")
 		return null
 	return heap[0].data
+
 
 ## Checks if the heap is empty
 ## Runs in O(1) great for checks against returning null.
@@ -38,11 +60,3 @@ func has(data: Variant, key: int) -> bool:
 		if a.data == data and a.key == key:
 			return true
 	return false
-
-
-func _percolate_up() -> void:
-	pass
-
-
-func _percolate_down() -> void:
-	pass
