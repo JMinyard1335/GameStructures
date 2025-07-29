@@ -9,7 +9,8 @@ class_name MinHeap extends Heap
 ## Take the node move it up the tree if its key is < its parent.
 func percolate_up(index: int) -> void:
 	while index > 0:
-		@warning_ignore("integer_division") var parent = floor((index - 1) / 2)
+		@warning_ignore("integer_division")
+		var parent = floor((index - 1) / 2)
 		if heap[index].key < heap[parent].key:
 			Utils.swap_array(heap, index, parent)
 		else:

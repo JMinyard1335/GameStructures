@@ -1,21 +1,20 @@
 extends Node
 
 var grid: GridMap
-var tile_graph: UndirectedGraph = UndirectedGraph.new()
+var tile_graph: TileGraph
 
 
 func init(g: GridMap) -> void:
 	grid = g
-	tile_graph = UndirectedGraph.new() # Initialize the graph
+	tile_graph = TileGraph.new() 
 	for cell in grid.get_used_cells():
-		# Create a Tile object for the current cell
-		var t = Tile.new(cell, map_to_world(cell), grid.get_cell_item(cell))
-		tile_graph.add_vertex(t)
+		# TileGraph automatically makes the tiles based off a cell
+		tile_graph.add_vertex(cell)
 		
 		# Add edges to adjacent tiles
 		for neighbor in get_adjacent_cells(cell):
-			if tile_graph.has_vertex(neighbor):
-				tile_graph.add_edge(t, neighbor,1) # Assuming a default cost of 1 for adjacency
+			if tile_graph.graph.has(neighbor):
+				tile_graph.add_edge(cell, neighbor)
 
 				
 # Helper function to get adjacent cells in the grid
@@ -40,7 +39,7 @@ func map_to_world(pos: Vector3i) -> Vector3:
 
 
 func world_to_map(pos: Vector3) -> Vector3i:
-	var grid_coord = grid.local_to_map(grid.to_local(pos))
+	var grid_coord: Vector3i = grid.local_to_map(grid.to_local(pos))
 	if not self.has_cell(grid_coord):
 		push_error("No Cell Exist in the Grid Map.".to_upper())
 		
@@ -55,8 +54,9 @@ func has_cell(cell: Vector3i) -> bool:
 	return false
 
 
-## Pulls a tile from the graph
-func get_tile(pos: Vector3i) -> Tile:
-	if tile_graph.has_vertex(
+func has_vertex(pos: Vector3i) -> bool:
+	return tile_graph.has_vertex(pos)
 
 
+func get_vertex(pos: Vector3i) -> Tile:
+	return tile_graph[str(pos)]

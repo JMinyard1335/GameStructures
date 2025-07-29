@@ -1,7 +1,7 @@
 class_name Atom
 
 var data: Variant  # the important info
-var key: int  # can be used for indexing and sorting
+var key: int = 0  # can be used for indexing and sorting
 var type: Variant.Type:  # Type hint for the item (Might not be needed)
 	set(x):
 		type = x as Variant.Type

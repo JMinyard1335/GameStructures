@@ -12,7 +12,7 @@
 ## _percolate_up, moves a node from the last position up the heap balancing it.[br]
 ## _percolate_down, Moves a node from the root down the heap balancing it.
 
-var heap: Array = [Atom]
+var heap: Array[Atom] = []
 
 @abstract func percolate_up(index: int) -> void
 @abstract func percolate_down(index: int) -> void
@@ -33,7 +33,8 @@ func pop() -> Variant:
 		return null
 	
 	var min_val = heap[0]
-	heap[0] = heap.pop_back()
+	var end_val = heap.pop_back()
+	heap[0] = end_val
 	percolate_down(0)
 	return min_val
 

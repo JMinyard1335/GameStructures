@@ -1,10 +1,13 @@
 class_name MoveTo extends Command
 ## Moves a Character from one tile in a grid to another
 
-var target_tile: Tile
+var target_tile: Tile = null
 var path: Array[Tile] = []
 
+func _ready() -> void:
+	command_name = "MoveTo"
 
+	
 func execuate() -> bool:
 	if not target_tile:
 		push_error("Target tile is not set")
@@ -12,8 +15,7 @@ func execuate() -> bool:
 
 	var graph = TileManager.tile_graph
 	var current_tile = TileManager.world_to_map(target.position)
-
-	path = GraphAlgos.dijkstra(graph, current_tile, target_tile)
+	
 	if path.is_empty():
 		push_error("No valid path to the target tile.")
 

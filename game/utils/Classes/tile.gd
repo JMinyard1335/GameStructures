@@ -9,6 +9,8 @@ class_name Tile
 var position: Vector3i ## Position in the grid
 var global_position: Vector3 ## Position in the World
 var height: int ## Height in the grid
+## What tiles are next to this tile.
+var adjacency_list: Dictionary = {} # {position : Tile at position}
 
 # Tile info
 var is_walkable: bool = true ## Can this tile be walked on.
@@ -28,3 +30,23 @@ func _init(p: Vector3i, gp: Vector3, t):
 	global_position = gp
 	height = position.y
 	type = t
+	
+
+func has_adj(pos: Vector3i) -> bool:
+	return adjacency_list.has(pos)
+
+
+func erase_adj(pos: Vector3i) -> void:
+	if not has_adj(pos):
+		push_warning("Adjacency does not have this position")
+		return
+	
+	adjacency_list.erase(pos)
+
+
+func get_adj_cost(pos) -> int:
+	if not has_adj(pos):
+		push_warning("There is no link between tiles.")
+		return -1
+	
+	return adjacency_list[pos]
