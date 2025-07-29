@@ -1,5 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://demhavxwdjd1f"]
+[gd_scene load_steps=3 format=3 uid="uid://demhavxwdjd1f"]
 
 [ext_resource type="PackedScene" uid="uid://c3sfa34v6pobk" path="res://assets/models/characters/mage/Mage.glb" id="1_7il63"]
+[ext_resource type="Script" uid="uid://b8w6q7y1j8stu" path="res://entities/Adventures/mage.gd" id="2_xxg6m"]
 
-[node name="Mage" instance=ExtResource("1_7il63")]
+[node name="Mage" node_paths=PackedStringArray("animations") instance=ExtResource("1_7il63")]
+script = ExtResource("2_xxg6m")
+animations = NodePath("AnimationPlayer")

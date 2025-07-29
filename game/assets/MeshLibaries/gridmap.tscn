@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://bwveasqw4rrq8"]
 
 [ext_resource type="PackedScene" uid="uid://bxfjunlbyjrln" path="res://assets/models/tiles/water.gltf" id="1_ai2xn"]
+[ext_resource type="PackedScene" uid="uid://sancjwxm5krv" path="res://assets/models/tiles/scenes/dirt.tscn" id="1_wq3cv"]
+[ext_resource type="PackedScene" uid="uid://cpdb1hvoqqelf" path="res://assets/models/tiles/scenes/dirt_with_grass.tscn" id="2_1jkxn"]
 [ext_resource type="PackedScene" uid="uid://snlrb2rev20m" path="res://assets/models/tiles/bricks_B.gltf" id="2_wq3cv"]
-[ext_resource type="PackedScene" uid="uid://btfx1dwscf1lf" path="res://assets/models/tiles/dirt.gltf" id="3_1jkxn"]
-[ext_resource type="PackedScene" uid="uid://csht3v1ro5i3q" path="res://assets/models/tiles/dirt_with_grass.gltf" id="4_y5jnn"]
-[ext_resource type="PackedScene" uid="uid://dr06gdny5a45d" path="res://assets/models/tiles/grass.gltf" id="5_yvcgn"]
+[ext_resource type="PackedScene" uid="uid://1pxxgcpyg3k4" path="res://assets/models/tiles/scenes/grass.tscn" id="3_y5jnn"]
 [ext_resource type="PackedScene" uid="uid://bijk7kbexdepw" path="res://assets/models/tiles/gravel.gltf" id="6_y0e4m"]
 [ext_resource type="PackedScene" uid="uid://cccf00ojtv0ba" path="res://assets/models/tiles/gravel_with_grass.gltf" id="7_8lj6m"]
 [ext_resource type="PackedScene" uid="uid://d22hjpyawkee8" path="res://assets/models/tiles/stone.gltf" id="8_kug7q"]
@@ -14,12 +14,12 @@
 
 [node name="Node3D" type="Node3D"]
 
-[node name="dirt" parent="." instance=ExtResource("3_1jkxn")]
+[node name="dirt" parent="." instance=ExtResource("1_wq3cv")]
 
-[node name="dirt_with_grass" parent="." instance=ExtResource("4_y5jnn")]
+[node name="dirt_with_grass" parent="." instance=ExtResource("2_1jkxn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 
-[node name="grass" parent="." instance=ExtResource("5_yvcgn")]
+[node name="grass" parent="." instance=ExtResource("3_y5jnn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 
 [node name="gravel_with_grass" parent="." instance=ExtResource("7_8lj6m")]
@@ -41,7 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 
 [node name="wood2" parent="." instance=ExtResource("10_wq3cv")]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 5.0442123, 0, 10)
+transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, 5.0442123, 0, 10)
 
 [node name="tree" parent="." instance=ExtResource("10_rvgn8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)

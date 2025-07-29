@@ -33,8 +33,8 @@ func get_adjacent_cells(cell: Vector3i) -> Array:
 
 
 func map_to_world(pos: Vector3i) -> Vector3:
-	if not tile_graph.has_vertex(pos):
-		push_error("no tile exist to map to world coordinates".to_upper())
+	if not grid.get_used_cells().find(pos):
+		push_error("no tile exist to map to world coordinates ".to_upper() + str(pos).to_upper())
 		
 	return grid.to_global(grid.map_to_local(pos))
 
@@ -53,5 +53,10 @@ func has_cell(cell: Vector3i) -> bool:
 		return true
 	
 	return false
+
+
+## Pulls a tile from the graph
+func get_tile(pos: Vector3i) -> Tile:
+	if tile_graph.has_vertex(
 
 

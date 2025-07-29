@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cr3iuklldaxam"]
+
+[ext_resource type="Script" uid="uid://cda0mbth8tk6b" path="res://entities/Camera/camera_rig.gd" id="1_2u5tl"]
+[ext_resource type="Script" uid="uid://g34lak03d1i" path="res://commands/pivot.gd" id="1_ohm1d"]
+[ext_resource type="Script" uid="uid://baa7lk0l5r7bd" path="res://commands/yaw.gd" id="2_y2eq5"]
+[ext_resource type="Script" uid="uid://ba5s0s7rsftij" path="res://commands/pitch.gd" id="4_oey3e"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_b0e27"]
+dof_blur_far_distance = 0.5
+dof_blur_far_transition = -1.0
+dof_blur_near_enabled = true
+dof_blur_near_distance = 22.11
+dof_blur_near_transition = 2410.71
+
+[node name="CameraRig" type="Node3D"]
+script = ExtResource("1_2u5tl")
+
+[node name="SoundEffect" type="AudioStreamPlayer" parent="."]
+
+[node name="CameraPivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_ohm1d")
+
+[node name="CameraYaw" type="Node3D" parent="CameraPivot"]
+unique_name_in_owner = true
+script = ExtResource("2_y2eq5")
+
+[node name="CameraPitch" type="Node3D" parent="CameraPivot/CameraYaw"]
+unique_name_in_owner = true
+script = ExtResource("4_oey3e")
+
+[node name="CameraUtils" type="Camera3D" parent="CameraPivot/CameraYaw/CameraPitch"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+attributes = SubResource("CameraAttributesPractical_b0e27")
