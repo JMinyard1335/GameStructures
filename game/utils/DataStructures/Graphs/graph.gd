@@ -58,6 +58,10 @@ func get_cost(vertex_a: Variant, vertex_b: Variant) -> int:
 	return graph[vertex_a][vertex_b]
 
 
+func has_vertex(vertex: Variant) -> bool:
+	return graph.has(vertex)
+
+
 # Check if the two vertices exist and prints which or both.
 func _vertices_exist(vertex_a: Variant, vertex_b: Variant) -> bool:
 	if not graph.has(vertex_a) or not graph.has(vertex_b): # Check if the vertices are in the graph.

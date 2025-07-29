@@ -1,0 +1,47 @@
+[gd_scene load_steps=12 format=3 uid="uid://bwveasqw4rrq8"]
+
+[ext_resource type="PackedScene" uid="uid://bxfjunlbyjrln" path="res://assets/models/tiles/water.gltf" id="1_ai2xn"]
+[ext_resource type="PackedScene" uid="uid://snlrb2rev20m" path="res://assets/models/tiles/bricks_B.gltf" id="2_wq3cv"]
+[ext_resource type="PackedScene" uid="uid://btfx1dwscf1lf" path="res://assets/models/tiles/dirt.gltf" id="3_1jkxn"]
+[ext_resource type="PackedScene" uid="uid://csht3v1ro5i3q" path="res://assets/models/tiles/dirt_with_grass.gltf" id="4_y5jnn"]
+[ext_resource type="PackedScene" uid="uid://dr06gdny5a45d" path="res://assets/models/tiles/grass.gltf" id="5_yvcgn"]
+[ext_resource type="PackedScene" uid="uid://bijk7kbexdepw" path="res://assets/models/tiles/gravel.gltf" id="6_y0e4m"]
+[ext_resource type="PackedScene" uid="uid://cccf00ojtv0ba" path="res://assets/models/tiles/gravel_with_grass.gltf" id="7_8lj6m"]
+[ext_resource type="PackedScene" uid="uid://d22hjpyawkee8" path="res://assets/models/tiles/stone.gltf" id="8_kug7q"]
+[ext_resource type="PackedScene" uid="uid://blx7kxmw2t6ob" path="res://assets/models/tiles/stone_dark.gltf" id="9_pr2s5"]
+[ext_resource type="PackedScene" uid="uid://ohdi57u0jo5u" path="res://assets/models/tiles/tree.gltf" id="10_rvgn8"]
+[ext_resource type="PackedScene" uid="uid://dkkcpd4d5f7hu" path="res://assets/models/tiles/wood.gltf" id="10_wq3cv"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="dirt" parent="." instance=ExtResource("3_1jkxn")]
+
+[node name="dirt_with_grass" parent="." instance=ExtResource("4_y5jnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="grass" parent="." instance=ExtResource("5_yvcgn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="gravel_with_grass" parent="." instance=ExtResource("7_8lj6m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+
+[node name="gravel" parent="." instance=ExtResource("6_y0e4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="stone" parent="." instance=ExtResource("8_kug7q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+
+[node name="stone_dark" parent="." instance=ExtResource("9_pr2s5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 5)
+
+[node name="bricks" parent="." instance=ExtResource("2_wq3cv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 5)
+
+[node name="water" parent="." instance=ExtResource("1_ai2xn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="wood2" parent="." instance=ExtResource("10_wq3cv")]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 5.0442123, 0, 10)
+
+[node name="tree" parent="." instance=ExtResource("10_rvgn8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)

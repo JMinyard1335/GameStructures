@@ -3,6 +3,7 @@ class_name MoveTo extends Command
 
 
 func execuate() -> bool:
+	target = a
 	return true
 
 
