@@ -1,44 +1,73 @@
 @abstract class_name Graph
 ## A graph is a dictionary of objects
 ##
-## The Dictionary is {Vertex : Array[Edges]}
+## The Dictionary is { start Variant : { destination Variant : cost int }}
 
-var graph: Dictionary = {}
-var edge_map: Dictionary = {}
+#region Variables --------------------------------------------------------------
+var graph: Dictionary = {} 
+var rev_edge_map: Dictionary = {}
+#endregion ---------------------------------------------------------------------
 
-@abstract func add_vertex(data: Variant, key: int) -> void
-@abstract func remove_vertex(vertex: Vertex) -> void
-@abstract func add_edge(vertex_a: Vertex, vertex_b: Vertex, weight: int = 0) -> void
-@abstract func remove_edge(edge: Edge) -> void
-@abstract func is_adjacent(vertex_a: Vertex, vertex_b: Vertex) -> bool
-@abstract func get_neighbors(vertex: Vertex) -> Dictionary;
+#region Abstract Functions -----------------------------------------------------
+@abstract func remove_vertex(vertex: Variant) -> void
+@abstract func add_edge(vertex_a: Variant, vertex_b: Variant,  weight: int = 0) -> void
+@abstract func remove_edge(vertex_a: Variant, vertex_b: Variant) -> void
+#endregion ---------------------------------------------------------------------
 
-class Vertex:
-	var data: Variant
-	var key: int
+
+#region Base Functions ---------------------------------------------------------
+## Adds a new vertex to the graph if it one does not already exist.
+## [param vertex]: [Variant] the data to be stored as a key
+func add_vertex(vertex: Variant) -> void:
+	if graph.has(vertex):
+		push_warning("Trying to add an existing vertex")
+		return
 	
-	func _init(d: Variant, k: int) -> void:
-		data = d
-		key = k
-		
-	func _hash() -> int:
-		return key
-	
-	func _equals(other: Vertex) -> bool:
-		return self.key == other.key
-		
-	
-class Edge:
-	var start: Vertex
-	var end: Vertex
-	var weight: int
-	
-	func _init(s: Vertex, e: Vertex, w: int) -> void:
-		start = s
-		end = e
-		weight = w
+	graph[vertex] = {}
 
-	func _equals(other: Edge) -> bool:
-		return start == other.start and end == other.end and weight == other.weight
-		
 
+## Check if there is an edge between vertex_a and vertex_b. [br]
+## [param vertex_a]: [Variant] start of the path[br]
+## [param vertex_b]: [Variant] destination to check[br]
+func is_adjacent(vertex_a: Variant, vertex_b: Variant) -> bool:
+	if not _vertices_exist(vertex_a, vertex_b):
+		return false
+	
+	return graph[vertex_a].has(vertex_b)
+
+
+##
+func get_neighbors(vertex: Variant) -> Dictionary:
+	if not graph.has(vertex):
+		push_warning("Vertex does not exist")
+		return {}
+	
+	return graph[vertex]
+
+
+## Returns the path cost from the graph, -1 if no path cost exists
+## [param vertex_a] : [Variant] the starting vertex
+## [param vertex_b] : [Variant] the ending vertex
+func get_cost(vertex_a: Variant, vertex_b: Variant) -> int:
+	if not _vertices_exist(vertex_a, vertex_b):
+		return -1
+	if not graph[vertex_a].has(vertex_b):
+		push_warning("Vertex A does not have an edge to Vertex B")
+		return -1
+	
+	return graph[vertex_a][vertex_b]
+
+
+# Check if the two vertices exist and prints which or both.
+func _vertices_exist(vertex_a: Variant, vertex_b: Variant) -> bool:
+	if not graph.has(vertex_a) or not graph.has(vertex_b): # Check if the vertices are in the graph.
+		var m: String = ""
+		if not graph.has(vertex_a):
+			m = m + "vertex_a is not in the graph\n"
+		if not graph.has(vertex_b):
+			m = m + "vertex_b is not in the graph\n"
+		push_warning(m)
+		return false
+	return true
+
+#endregion ---------------------------------------------------------------------

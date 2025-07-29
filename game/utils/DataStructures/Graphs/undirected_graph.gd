@@ -1,64 +1,45 @@
 class_name UndirectedGraph extends Graph
 ## A Graph with undirected edges.
+##
+## Can also be thought of as a bidirectional graph.
 
 
-func add_vertex(data: Variant, key: int) -> void:
-	var vertex = Vertex.new(data, key)
-	if graph.has(vertex):
-		push_warning("Attempted to add a Vertex that already exist, No action taken")
+func add_edge(vertex_a: Variant, vertex_b: Variant,  weight: int = 0) -> void:
+	if not _vertices_exist(vertex_a, vertex_b):
 		return
-	graph[vertex] = {}
-
-
-func add_edge(vertex_a: Vertex, vertex_b: Vertex, weight: int = 0) -> void:
-	if not graph.has(vertex_a) or not graph.has(vertex_b):
-		push_error("One or both Vertices do not exist, No action taken")
+	if graph[vertex_a].has(vertex_b) and graph[vertex_b].has(vertex_a):
+		push_warning("The edge already exists.")
 		return
 	
-	var edge_a = Edge.new(vertex_a, vertex_b, weight)
-	var edge_b = Edge.new(vertex_b, vertex_a, weight)
+	graph[vertex_a][vertex_b] = weight
+	graph[vertex_b][vertex_a] = weight
 
-	if not graph[vertex_a].has(edge_a):
-		graph[vertex_a][edge_a] = weight
-		if not edge_map.has(vertex_b):
-			edge_map[vertex_b] = []
-		edge_map[vertex_b].append(edge_a)
-	
-	if not graph[vertex_b].has(edge_b):
-		graph[vertex_b][edge_b] = weight
-		if not edge_map.has(vertex_a):
-			edge_map[vertex_a] = []
-		edge_map[vertex_a].append(edge_b)
-	
-		
-func remove_vertex(vertex: Vertex) -> void:
+
+func remove_edge(vertex_a: Variant, vertex_b: Variant) -> void:
+	if not _vertices_exist(vertex_a, vertex_b): # do both vertices exist
+		return
+	if graph.has(vertex_a) and not graph[vertex_a].has(vertex_b):
+		push_warning("Edge from a -> b does not exist")
+	if graph.has(vertex_b) and not graph[vertex_b].has(vertex_a):
+		push_warning("Edge from b -> a does not exist")		
+
+	graph[vertex_a].erase(vertex_b)
+	graph[vertex_b].erase(vertex_a)
+
+
+func remove_vertex(vertex: Variant) -> void:
 	if not graph.has(vertex):
-		push_warning("Attempted to remove a Vertex that does not exist, No action taken")
-		return
-
-	graph.erase(vertex)
-	if edge_map.has(vertex):
-		for e in edge_map[vertex]:
-			graph[e.start].erase(e)
-		edge_map.erase(vertex)
-
-		
-func remove_edge(edge: Edge) -> void:
-	if not graph.has(edge.start):
-		push_warning("Attempted to remove edge from vertex that does not exist.")
-		return
-	if not graph[edge.start].has(edge):
-		push_warning("Attempted to remove an edge that does not exist.")
+		push_warning("The Graph does not contain the given vertex")
 		return
 	
-	graph[edge.start].erase(edge)
-	if edge_map.has(edge.end):
-		edge_map[edge.end].erase(edge)
+	for k in graph[vertex].keys():
+		remove_edge(vertex, k)
+	graph.erase(vertex)
 
 
-func is_adjacent(vertex_a: Vertex, vertex_b: Vertex) -> bool:
-	return false
-
-
-func get_neighbors(vertex: Vertex) -> Dictionary:
-	return {}
+func get_neighbors(vertex: Variant) -> Dictionary:
+	if not graph.has(vertex):
+		push_warning("Vertex does not exist")
+		return {}
+	
+	return graph[vertex]
