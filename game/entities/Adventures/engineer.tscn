@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce0pcbwy1nmgu"]
+
+[ext_resource type="PackedScene" uid="uid://d32v1ln8q6rfc" path="res://assets/models/characters/engineer/Engineer.glb" id="1_v15jw"]
+
+[node name="Engineer" instance=ExtResource("1_v15jw")]

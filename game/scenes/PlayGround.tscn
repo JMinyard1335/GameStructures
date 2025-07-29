@@ -2,8 +2,8 @@
 
 [ext_resource type="MeshLibrary" uid="uid://dr1hye41ye2ks" path="res://assets/MeshLibaries/Gridmap.meshlib" id="1_ffd8t"]
 [ext_resource type="Script" uid="uid://c5se7rmv7y2kj" path="res://scenes/play_ground.gd" id="1_kwatd"]
-[ext_resource type="PackedScene" uid="uid://b222aeclen40h" path="res://entities/mage.tscn" id="2_ffd8t"]
-[ext_resource type="Script" uid="uid://b8w6q7y1j8stu" path="res://entities/mage.gd" id="3_dvbyl"]
+[ext_resource type="PackedScene" uid="uid://demhavxwdjd1f" path="res://entities/Adventures/mage.tscn" id="3_dvbyl"]
+[ext_resource type="Script" uid="uid://b8w6q7y1j8stu" path="res://entities/Adventures/mage.gd" id="4_kwatd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pe6ch"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -42,6 +42,6 @@ data = {
 transform = Transform3D(1, 0, 0, 0, 0.6921432, 0.7217603, 0, -0.7217603, 0.6921432, 14.981646, 25.600624, 6.6703663)
 fov = 69.4
 
-[node name="Mage" parent="." instance=ExtResource("2_ffd8t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.843105, 2.0919206, -4.996347)
-script = ExtResource("3_dvbyl")
+[node name="Mage" parent="." instance=ExtResource("3_dvbyl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.824444, 4.360021, 0)
+script = ExtResource("4_kwatd")

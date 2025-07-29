@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://jok01s73t6in"]
+
+[ext_resource type="PackedScene" uid="uid://dwfe54r4c8jll" path="res://assets/models/characters/druid/Druid.glb" id="1_rufd3"]
+
+[node name="Druid" instance=ExtResource("1_rufd3")]

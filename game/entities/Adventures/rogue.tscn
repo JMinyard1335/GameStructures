@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4fm08ivv5sil"]
+
+[ext_resource type="PackedScene" uid="uid://dxg4nv6nakxu8" path="res://assets/models/characters/rouge/Rogue.glb" id="1_xdgof"]
+
+[node name="Rogue" instance=ExtResource("1_xdgof")]
