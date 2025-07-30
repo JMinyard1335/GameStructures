@@ -11,8 +11,6 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			MOUSE_BUTTON_LEFT :
-				print("Left mouse button at position: %s" % event.position)
-				
 				# Create a PhysicsRayQueryParameters3D object
 				var ray_query = PhysicsRayQueryParameters3D.new()
 				
@@ -24,20 +22,19 @@ func _input(event: InputEvent) -> void:
 				ray_query.set_collision_mask(1)
 				ray_query.exclude = [] # Exclude specific objects if necessary
 				
-				print("Ray origin (from): %s" % ray_query.from)
-				print("Ray direction (to): %s" % ray_query.to)
-
 				# Perform the raycast
 				var space_state = get_world_3d().direct_space_state
 				var result = space_state.intersect_ray(ray_query)
-				print(result)
+
 				if result:
-					var collision_point = result.position
-					var target_tile: Vector3i = TileManager.world_to_map(collision_point)
+					var target_tile: Vector3i = TileManager.world_to_map(result.position)
+					print("Target Tile %s"%target_tile)
 
 					var mc = MoveTo.new()
 					mc.target = self
 					mc.target_tile = TileManager.tile_graph.get_tile(target_tile)
+					print("Adding new move command to the queue")
+					mc.print()
 					add_command(mc)
 					
 					

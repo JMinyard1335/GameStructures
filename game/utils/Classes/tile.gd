@@ -25,12 +25,11 @@ var has_effect: bool = false ## Is there some type of elemental effect on the ti
 var effect = null ## Is there some type of elemental effect on the tile
 
 
-func _init(p: Vector3i, gp: Vector3, t):
+func _init(p: Vector3i, t: int):
 	position = p
-	global_position = gp
 	height = position.y
 	type = t
-	
+
 
 func has_adj(pos: Vector3i) -> bool:
 	return adjacency_list.has(pos)
@@ -50,3 +49,13 @@ func get_adj_cost(pos) -> int:
 		return -1
 	
 	return adjacency_list[pos]
+
+
+func print() -> void:
+	print("-".repeat(60))
+	print("Position: %s"%position)
+	print("World Position: %s"%global_position)
+	print("Height: %s"%height)
+	print("Type: %s"%type)
+
+

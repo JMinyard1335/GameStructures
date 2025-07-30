@@ -16,3 +16,10 @@ var priority: int = 3 # when should the command go in the queue
 
 @abstract func execuate() -> bool
 @abstract func undo() -> bool
+
+
+func print():
+	print("-".repeat(60))
+	print("Target: %s"%target)
+	print("Name %s"%command_name)
+	print("Priority: %s"%priority)

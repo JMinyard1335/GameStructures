@@ -15,7 +15,7 @@ func init(g: GridMap) -> void:
 		for neighbor in get_adjacent_cells(cell):
 			if tile_graph.graph.has(neighbor):
 				tile_graph.add_edge(cell, neighbor)
-
+		#tile_graph.print()
 				
 # Helper function to get adjacent cells in the grid
 func get_adjacent_cells(cell: Vector3i) -> Array:
@@ -32,17 +32,14 @@ func get_adjacent_cells(cell: Vector3i) -> Array:
 
 
 func map_to_world(pos: Vector3i) -> Vector3:
-	if not grid.get_used_cells().find(pos):
-		push_error("no tile exist to map to world coordinates ".to_upper() + str(pos).to_upper())
+	if not tile_graph.graph.has(pos):
+		push_warning("no tile exists to map to world coordinates ".to_upper() + str(pos).to_upper())
 		
 	return grid.to_global(grid.map_to_local(pos))
 
 
 func world_to_map(pos: Vector3) -> Vector3i:
-	var grid_coord: Vector3i = grid.local_to_map(grid.to_local(pos))
-	if not self.has_cell(grid_coord):
-		push_error("No Cell Exist in the Grid Map.".to_upper())
-		
+	var grid_coord: Vector3i = grid.local_to_map(grid.to_local(pos))		
 	return grid_coord
 
 
@@ -54,9 +51,9 @@ func has_cell(cell: Vector3i) -> bool:
 	return false
 
 
-func has_vertex(pos: Vector3i) -> bool:
+func has_tile(pos: Vector3i) -> bool:
 	return tile_graph.has_vertex(pos)
 
 
-func get_vertex(pos: Vector3i) -> Tile:
-	return tile_graph[str(pos)]
+func get_tile(pos: Vector3i) -> Tile:
+	return tile_graph.get_tile(pos)

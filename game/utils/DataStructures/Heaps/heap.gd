@@ -12,10 +12,34 @@
 ## _percolate_up, moves a node from the last position up the heap balancing it.[br]
 ## _percolate_down, Moves a node from the root down the heap balancing it.
 
-var heap: Array[Atom] = []
+var heap: Array = []
 
 @abstract func percolate_up(index: int) -> void
 @abstract func percolate_down(index: int) -> void
+
+
+## Checks if the heap is empty
+## Runs in O(1) great for checks against returning null.
+func is_empty() -> bool:
+	return heap.is_empty()
+
+
+func size() -> int:
+	return heap.size()
+
+
+## Looks for an atom with the matching data and key.
+## Runs in O(N), use sparingly as it is inefficient on large sets. 
+func has(data: Variant, key: int) -> bool:
+	for a in heap:
+		if a.data == data and a.key == key:
+			return true
+	return false
+
+
+## Clears all the data in the heap
+func clear() -> void:
+	heap.clear()
 
 
 ## Pushes an [Atom] to the back of the heap and percolates up.
@@ -31,7 +55,10 @@ func pop() -> Variant:
 	if is_empty():
 		push_warning("Trying to Pop from an empty Min Heap, returning null")
 		return null
-	
+		
+	if heap.size() == 1:
+		return self.heap.pop_front()
+		
 	var min_val = heap[0]
 	var end_val = heap.pop_back()
 	heap[0] = end_val
@@ -46,22 +73,3 @@ func peek() -> Variant:
 		push_warning("Heap Structure is trying to peak an empty heap, returning null.")
 		return null
 	return heap[0].data
-
-
-## Checks if the heap is empty
-## Runs in O(1) great for checks against returning null.
-func is_empty() -> bool:
-	return heap.is_empty()
-
-
-## Looks for an atom with the matching data and key.
-## Runs in O(N), use sparingly as it is inefficient on large sets. 
-func has(data: Variant, key: int) -> bool:
-	for a in heap:
-		if a.data == data and a.key == key:
-			return true
-	return false
-
-## Clears all the data in the heap
-func clear() -> void:
-	heap.clear()

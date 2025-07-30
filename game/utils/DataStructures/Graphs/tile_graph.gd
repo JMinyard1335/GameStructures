@@ -11,6 +11,7 @@ func add_vertex(data: Variant) -> void:
 	
 	var t: Tile = construct_tile(data as Vector3i)
 	graph[t.position] = t
+	graph[t.position].global_position = TileManager.map_to_world(t.position)
 
 	if graph[t.position] != t:
 		push_error("Tiles are not being added")
@@ -88,10 +89,21 @@ func get_neighbors(vertex: Variant) -> Dictionary:
 ## Construct a tile based off a give Vector3i
 func construct_tile(data: Vector3i) -> Tile:
 	var pos = data
-	var gp = TileManager.map_to_world(pos)
 	var type = TileManager.grid.get_cell_item(pos)
-	return Tile.new(pos, gp, type)
+	return Tile.new(pos, type)
 
 
 func get_tile(pos: Vector3i) -> Tile:
+	if not graph.has(pos):
+		push_warning("Cant fetch a tile from that location")
+		return null
+	
 	return graph[pos]
+
+
+func print() -> void:
+	for k in graph:
+		print("-".repeat(80))
+		print("Key: %s"%k)
+		print("Stored Tile info")
+		graph[k].print()

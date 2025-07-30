@@ -2,22 +2,29 @@
 
 
 var command_queue: MinHeap = MinHeap.new()
-var undo_queue: Array[Command] = []
+var undo_queue: Array = []
 var awaiting_execution: bool = false
 
 func add_command(c : Command) -> void:
 	command_queue.push(c, c.priority)
 	add_child(c)
 	c.target = self
-	execuate_next()
+	c.print()
+	self.execuate_next()
 
 	
 func execuate_next() -> void:
-	var c: Command = command_queue.pop()
-	undo_queue.append(c)
+	if awaiting_execution or command_queue.size() == 0:
+		return
+	
 	awaiting_execution = true
-	await c.execuate()
+	var c: Command = command_queue.peek() as Command
+	c.print()
+	c.execuate()
+	print("execution Complete")
 	awaiting_execution = false
+	undo_queue.append( command_queue.pop())
+
 
 	
 func undo_last() -> void:
