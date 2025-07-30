@@ -5,39 +5,14 @@ class_name Mage extends Character
 
 func _ready() -> void:
 	animations.play("Idle")
+	SignalHub.camera_ray_collided.connect(_handle_movement)
 
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
-			MOUSE_BUTTON_LEFT :
-				# Create a PhysicsRayQueryParameters3D object
-				var ray_query = PhysicsRayQueryParameters3D.new()
-				
-				# Set the ray's origin and direction
-				ray_query.from = camera.project_ray_origin(event.position)
-				ray_query.to = ray_query.from + camera.project_ray_normal(event.position) * 1000
-				
-				# Optional: Set collision mask, exclude objects, etc.
-				ray_query.set_collision_mask(1)
-				ray_query.exclude = [] # Exclude specific objects if necessary
-				
-				# Perform the raycast
-				var space_state = get_world_3d().direct_space_state
-				var result = space_state.intersect_ray(ray_query)
-
-				if result:
-					var target_tile: Vector3i = TileManager.world_to_map(result.position)
-					print("Target Tile %s"%target_tile)
-
-					var mc = MoveTo.new()
-					mc.target = self
-					mc.target_tile = TileManager.tile_graph.get_tile(target_tile)
-					print("Adding new move command to the queue")
-					mc.print()
-					add_command(mc)
-					
-					
+			MOUSE_BUTTON_LEFT:
+				pass
 			MOUSE_BUTTON_RIGHT:
 				pass
 			MOUSE_BUTTON_RIGHT:
@@ -47,3 +22,11 @@ func _input(event: InputEvent) -> void:
 			MOUSE_BUTTON_WHEEL_DOWN:
 				print("Scroll wheel down")
 	pass
+
+
+## Takes in a [Vector3] from the cameras raycast.
+## Turns this position into a tile and creates a new move command.
+func _handle_movement(pos: Vector3):
+	pos = TileManager.world_to_map(pos) # reassign world as map coordinates
+	var c = MoveToTile.new(self, TileManager.get_tile(pos))
+	add_command(c)
