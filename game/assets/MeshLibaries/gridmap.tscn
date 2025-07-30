@@ -1,16 +1,16 @@
 [gd_scene load_steps=12 format=3 uid="uid://bwveasqw4rrq8"]
 
-[ext_resource type="PackedScene" uid="uid://bxfjunlbyjrln" path="res://assets/models/tiles/water.gltf" id="1_ai2xn"]
 [ext_resource type="PackedScene" uid="uid://sancjwxm5krv" path="res://assets/models/tiles/scenes/dirt.tscn" id="1_wq3cv"]
 [ext_resource type="PackedScene" uid="uid://cpdb1hvoqqelf" path="res://assets/models/tiles/scenes/dirt_with_grass.tscn" id="2_1jkxn"]
-[ext_resource type="PackedScene" uid="uid://snlrb2rev20m" path="res://assets/models/tiles/bricks_B.gltf" id="2_wq3cv"]
 [ext_resource type="PackedScene" uid="uid://1pxxgcpyg3k4" path="res://assets/models/tiles/scenes/grass.tscn" id="3_y5jnn"]
-[ext_resource type="PackedScene" uid="uid://bijk7kbexdepw" path="res://assets/models/tiles/gravel.gltf" id="6_y0e4m"]
-[ext_resource type="PackedScene" uid="uid://cccf00ojtv0ba" path="res://assets/models/tiles/gravel_with_grass.gltf" id="7_8lj6m"]
-[ext_resource type="PackedScene" uid="uid://d22hjpyawkee8" path="res://assets/models/tiles/stone.gltf" id="8_kug7q"]
-[ext_resource type="PackedScene" uid="uid://blx7kxmw2t6ob" path="res://assets/models/tiles/stone_dark.gltf" id="9_pr2s5"]
-[ext_resource type="PackedScene" uid="uid://ohdi57u0jo5u" path="res://assets/models/tiles/tree.gltf" id="10_rvgn8"]
-[ext_resource type="PackedScene" uid="uid://dkkcpd4d5f7hu" path="res://assets/models/tiles/wood.gltf" id="10_wq3cv"]
+[ext_resource type="PackedScene" uid="uid://c2w5760k3kgar" path="res://assets/models/tiles/scenes/gravel_with_grass.tscn" id="4_wq3cv"]
+[ext_resource type="PackedScene" uid="uid://bs1yh7rwfimw8" path="res://assets/models/tiles/scenes/gravel.tscn" id="5_wq3cv"]
+[ext_resource type="PackedScene" uid="uid://dild4h5pne3a1" path="res://assets/models/tiles/scenes/stone.tscn" id="6_1jkxn"]
+[ext_resource type="PackedScene" uid="uid://cush8fju4umih" path="res://assets/models/tiles/scenes/stone_dark.tscn" id="7_y5jnn"]
+[ext_resource type="PackedScene" uid="uid://vduf3jelu1tr" path="res://assets/models/tiles/scenes/bricks_red.tscn" id="8_wq3cv"]
+[ext_resource type="PackedScene" uid="uid://dmx66bxd07iwb" path="res://assets/models/tiles/scenes/water.tscn" id="9_1jkxn"]
+[ext_resource type="PackedScene" uid="uid://bnp55mr5w45e3" path="res://assets/models/tiles/scenes/tree.tscn" id="11_wq3cv"]
+[ext_resource type="PackedScene" uid="uid://bpp4p0c6wcpvg" path="res://assets/models/tiles/scenes/wood.tscn" id="11_y5jnn"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -22,26 +22,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 [node name="grass" parent="." instance=ExtResource("3_y5jnn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 
-[node name="gravel_with_grass" parent="." instance=ExtResource("7_8lj6m")]
+[node name="gravel_with_grass" parent="." instance=ExtResource("4_wq3cv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
 
-[node name="gravel" parent="." instance=ExtResource("6_y0e4m")]
+[node name="gravel" parent="." instance=ExtResource("5_wq3cv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
-[node name="stone" parent="." instance=ExtResource("8_kug7q")]
+[node name="stone" parent="." instance=ExtResource("6_1jkxn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
 
-[node name="stone_dark" parent="." instance=ExtResource("9_pr2s5")]
+[node name="stone_dark" parent="." instance=ExtResource("7_y5jnn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 5)
 
-[node name="bricks" parent="." instance=ExtResource("2_wq3cv")]
+[node name="bricks_red" parent="." instance=ExtResource("8_wq3cv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 5)
 
-[node name="water" parent="." instance=ExtResource("1_ai2xn")]
+[node name="water" parent="." instance=ExtResource("9_1jkxn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 
-[node name="wood2" parent="." instance=ExtResource("10_wq3cv")]
-transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, 5.0442123, 0, 10)
+[node name="wood" parent="." instance=ExtResource("11_y5jnn")]
+transform = Transform3D(0.4, 0, 0, 0, 2, 0, 0, 0, 0.4, 5, 0, 10)
 
-[node name="tree" parent="." instance=ExtResource("10_rvgn8")]
+[node name="tree" parent="." instance=ExtResource("11_wq3cv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)

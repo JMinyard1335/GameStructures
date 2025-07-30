@@ -7,22 +7,6 @@ func _ready() -> void:
 	animations.play("Idle")
 	SignalHub.camera_ray_collided.connect(_handle_movement)
 
-	
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		match event.button_index:
-			MOUSE_BUTTON_LEFT:
-				pass
-			MOUSE_BUTTON_RIGHT:
-				pass
-			MOUSE_BUTTON_RIGHT:
-				print("right mouse button at position: %s"%event.position)
-			MOUSE_BUTTON_WHEEL_UP :
-				print("Scroll wheel up")
-			MOUSE_BUTTON_WHEEL_DOWN:
-				print("Scroll wheel down")
-	pass
-
 
 ## Takes in a [Vector3] from the cameras raycast.
 ## Turns this position into a tile and creates a new move command.

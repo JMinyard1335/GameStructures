@@ -5,6 +5,7 @@ class_name Tile
 ## Can be stored in a Graph and easily be traversed
 ## with well known algorithms like Prim's and Dijkstra's.
 
+#region Variables
 # Position info 
 var position: Vector3i ## Position in the grid
 var global_position: Vector3 ## Position in the World
@@ -24,11 +25,19 @@ var type ## What type of tile is it.
 var has_effect: bool = false ## Is there some type of elemental effect on the tile
 var effect = null ## Is there some type of elemental effect on the tile
 
+#endregion
 
+#region Builtin Overloads
 func _init(p: Vector3i, t: int):
 	position = p
 	height = position.y
 	type = t
+
+#endregion
+
+#region Adjaceney Helpers
+func add_adj(pos: Vector3i, c: int):  
+	adjacency_list[pos] = c
 
 
 func has_adj(pos: Vector3i) -> bool:
@@ -50,12 +59,19 @@ func get_adj_cost(pos) -> int:
 	
 	return adjacency_list[pos]
 
+#endregion
 
+#region Debugging
 func print() -> void:
 	print("-".repeat(60))
 	print("Position: %s"%position)
 	print("World Position: %s"%global_position)
 	print("Height: %s"%height)
 	print("Type: %s"%type)
+	print("is_occupied: %s"%is_occupied)
+	if character:
+		print("Character: %s"%character)
+	print("is_walkable %s"%is_walkable)
+	print("Has treasure %s"%has_treasure)
 
-
+#endregion

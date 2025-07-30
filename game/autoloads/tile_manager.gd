@@ -8,8 +8,14 @@ extends Node
 var grid: GridMap
 var tile_graph: TileGraph
 var dir_offset = [
-	Vector3i(1, 0, 0), Vector3i(-1, 0, 0), # Left and Right
-	Vector3i(0, 0, 1), Vector3i(0, 0, -1)  # Forward and Backward
+	Vector3i(1, 0, 0), Vector3i(1, 1, 0), Vector3i(1, -1, 0), 
+	Vector3i(-1, 0, 0), Vector3i(-1, 1, 0), Vector3i(-1, -1, 0), 
+	Vector3i(0, 0, 1), Vector3i(0, 1, 1), Vector3i(0, -1, 1),
+	Vector3i(0, 0, -1), Vector3i(0, 1, -1), Vector3i(0, -1, -1),
+	Vector3i(1, 0, 1), Vector3i(1, 1, 1), Vector3i(1, -1, 1), 
+	Vector3i(-1, 0, 1), Vector3i(-1, 1, 1), Vector3i(-1, -1, 1), 
+	Vector3i(-1, 0, -1), Vector3i(-1, 1, -1), Vector3i(-1, -1, -1),
+	Vector3i(1, 0, -1), Vector3i(1, 1, -1), Vector3i(1, -1, -1),
 ]
 
 
@@ -26,20 +32,21 @@ func init(g: GridMap) -> void:
 		for neighbor in get_adjacent_cells(cell):
 			if tile_graph.graph.has(neighbor):
 				tile_graph.add_edge(cell, neighbor)
-		#tile_graph.print()
+			
 
-		
+#region GridMap Functions ----------------------------------
 ## Checks the left, right, forward, and back. cells to see if there are
 ## any that exist adjacent to the given cell.
-func get_adjacent_cells(cell: Vector3i) -> Array:
-	var neighbors = []
+func get_adjacent_cells(cell: Vector3i) -> Array[Vector3i]:
+	var neighbors: Array[Vector3i] = []
 	for dir in dir_offset:
 		var neighbor = cell + dir
 		if has_cell(neighbor): # Check if the neighbor exists in the grid
 			neighbors.append(neighbor)
 	return neighbors
+#endregion -------------------------------------------------
 
-
+#region Coordinate Mapping 
 ## Takes a grid coordinate ie. (0,0,1) and converts it to its
 ## global position which is a [Vector3]. if there is no tile at
 ## the given position push a warning and convert the value anyways
@@ -54,7 +61,9 @@ func world_to_map(pos: Vector3) -> Vector3i:
 	var grid_coord: Vector3i = grid.local_to_map(grid.to_local(pos))		
 	return grid_coord
 
+#endregion
 
+#region Checks
 ## Call to check if there is a cell in the gridmap.
 func has_cell(cell: Vector3i) -> bool:
 	if grid.get_used_cells().find(cell) != -1:
@@ -67,7 +76,13 @@ func has_cell(cell: Vector3i) -> bool:
 func has_tile(pos: Vector3i) -> bool:
 	return tile_graph.has_vertex(pos)
 
+#endregion
 
+#region Getters and Setters
 ## Returns a tile from the [TileGraph]
 func get_tile(pos: Vector3i) -> Tile:
 	return tile_graph.get_tile(pos)
+
+
+
+#endregion

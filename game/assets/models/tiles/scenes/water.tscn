@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmx66bxd07iwb"]
+
+[ext_resource type="PackedScene" uid="uid://bxfjunlbyjrln" path="res://assets/models/tiles/water.gltf" id="1_ktyhp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_awxab"]
+size = Vector3(1.9869385, 1.0997314, 1.9735107)
+
+[node name="water" instance=ExtResource("1_ktyhp")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="water" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="water/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0029467344, -0.387146, -0.013244629)
+shape = SubResource("BoxShape3D_awxab")
