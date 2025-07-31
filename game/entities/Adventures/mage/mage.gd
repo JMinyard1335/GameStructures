@@ -1,6 +1,5 @@
 class_name Mage extends Character
 
-@export var animations: AnimationPlayer
 @export var camera: Camera3D # Assign the camera node to this variable in the editor.
 
 func _ready() -> void:
@@ -12,5 +11,5 @@ func _ready() -> void:
 ## Turns this position into a tile and creates a new move command.
 func _handle_movement(pos: Vector3):
 	pos = TileManager.world_to_map(pos) # reassign world as map coordinates
-	var c = MoveToTile.new(self, TileManager.get_tile(pos))
+	var c = MoveToTile.new(self, pos)
 	add_command(c)

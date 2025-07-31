@@ -6,6 +6,8 @@ class_name CameraRig extends Node3D
 ## This allows functions like [method CameraUtils.shake] to be called by [method CameraRig.shake],
 ## since only the camera rig will be accessable in the scene tree.
 
+signal pivot_changed
+
 ## Used to play a sound effect when the camera rotates or pitches.
 @onready var audio: AudioStreamPlayer = $SoundEffect
 ## Point the camera moves around, also handles zoom.
@@ -20,6 +22,9 @@ class_name CameraRig extends Node3D
 # Ray Casting
 @export var ray_length: float = 1000.0
 #region Built-ins ------------------------------------------
+func _ready() -> void:
+	pivot_changed.connect(_on_pivot_changed)
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_select"):
 		cast_ray(event.position)
@@ -47,6 +52,7 @@ func _input(event: InputEvent) -> void:
 
 func set_pivot(pos: Vector3):
 	pivot.set_pivot(pos)
+	pivot_changed.emit()
 
 	
 ## Used to determine what tile is being clicked based on a ray
@@ -64,3 +70,7 @@ func cast_ray(pos):
 	var res = space_state.intersect_ray(ray_query)
 	if res:
 		SignalHub.camera_ray_collided.emit(res.position)
+
+		
+func _on_pivot_changed():
+	pivot.position = pivot.pivot_point

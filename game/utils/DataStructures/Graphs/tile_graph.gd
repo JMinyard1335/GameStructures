@@ -21,7 +21,7 @@ func add_vertex(data: Variant) -> void:
 	graph[t.position] = t
 	graph[t.position].global_position = TileManager.map_to_world(t.position)
 	# Check tiles are added properly
-	assert(graph[t.position] != t, "Tiles are not being added")
+	assert(graph[t.position] == t, "Tiles are not being added")
 
 
 ## Looks for and removes the vertex if found from the graph and the surface tiles

@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://demhavxwdjd1f"]
+
+[ext_resource type="PackedScene" uid="uid://c3sfa34v6pobk" path="res://assets/models/characters/mage/Mage.glb" id="1_7il63"]
+[ext_resource type="Script" uid="uid://b8w6q7y1j8stu" path="res://entities/Adventures/mage/mage.gd" id="2_xxg6m"]
+
+[node name="Mage" node_paths=PackedStringArray("animations") instance=ExtResource("1_7il63")]
+script = ExtResource("2_xxg6m")
+animations = NodePath("AnimationPlayer")
+
+[node name="Skeleton3D" parent="Rig" index="0"]
+bones/1/position = Vector3(4.3561184e-18, 0.36031148, 1.0385796e-24)
+bones/2/rotation = Quaternion(1.1351584e-10, 8.460577e-09, -0.043619394, 0.99904823)
+bones/3/rotation = Quaternion(1.12650264e-10, -8.440784e-09, 0.043619394, 0.99904823)
+bones/4/position = Vector3(0.21200734, 0.13413227, 8.480239e-08)
+bones/4/rotation = Quaternion(-0.7097659, 0.10333039, -0.31592265, 0.62108636)
+bones/5/rotation = Quaternion(2.6771517e-08, -7.8356635e-08, -0.66050684, 0.7508201)
+bones/7/rotation = Quaternion(-0.45201764, -0.08527637, -0.055035207, 0.8862162)
+bones/8/position = Vector3(3.063714e-08, 0.09612507, -0.057500005)
+bones/8/rotation = Quaternion(1.6097494e-09, 1.609757e-09, -0.7071068, 0.7071067)
+bones/9/position = Vector3(-0.21200734, 0.13413227, 8.5732175e-08)
+bones/9/rotation = Quaternion(-0.6190137, 0.39046597, 0.5528969, 0.39832586)
+bones/10/rotation = Quaternion(1.792837e-08, 2.7774798e-08, 0.5587805, 0.8293156)
+bones/12/rotation = Quaternion(-0.22438431, 0.51277065, 0.09602212, 0.82310253)
+bones/13/position = Vector3(-8.34822e-10, 0.096125096, -0.057500035)
+bones/13/rotation = Quaternion(1.6097335e-09, -1.6097335e-09, 0.7071068, 0.7071067)
+bones/14/rotation = Quaternion(0, 2.2412664e-20, 0, 1)
+bones/15/position = Vector3(0.17094506, 0.113587275, 0.020000014)
+bones/15/rotation = Quaternion(0.945631, -1.5636957e-07, -2.058762e-10, 0.32524145)
+bones/16/rotation = Quaternion(0.3766119, 6.395985e-08, -2.6154456e-07, 0.9263712)
+bones/17/rotation = Quaternion(-0.644513, -4.2806455e-08, 2.315242e-08, 0.76459336)
+bones/18/rotation = Quaternion(-3.047909e-08, 0.9203548, -0.39108446, 6.948485e-08)
+bones/19/position = Vector3(-0.17094506, 0.08358726, -0.01999999)
+bones/19/rotation = Quaternion(0.99897593, 2.6242483e-07, 3.608501e-08, -0.04524396)
+bones/20/rotation = Quaternion(0.6983515, -4.9418187e-08, 4.8498225e-07, 0.71575505)
+bones/21/rotation = Quaternion(-0.73754084, 3.0264937e-07, -2.9557117e-07, 0.67530257)
+bones/22/rotation = Quaternion(1.014648e-07, 0.76744276, -0.6411176, -1.10931154e-07)
+bones/23/rotation = Quaternion(0.7071068, -2.2930234e-07, -4.6055177e-08, 0.7071068)
+bones/24/position = Vector3(0.17094494, 0.17561328, 0.43185452)
+bones/24/rotation = Quaternion(-0.8663468, -4.8162498e-08, -8.806455e-08, 0.4994431)
+bones/25/position = Vector3(4.5569486e-09, 0.36283267, -2.4286127e-15)
+bones/25/rotation = Quaternion(6.6613483e-15, -1.3832117e-22, 1, -1.1600864e-34)
+bones/26/position = Vector3(-2.6049381e-08, 0.21343616, 1.0342981e-08)
+bones/26/rotation = Quaternion(-1.04035244e-07, 0.39108434, 0.92035484, -2.9526051e-08)
+bones/27/position = Vector3(-6.3112813e-09, 0.16565005, 5.2516187e-09)
+bones/28/rotation = Quaternion(1, -1.3322704e-15, 1.947072e-07, 0)
+bones/30/rotation = Quaternion(0.7071068, -3.823849e-08, 1.4500867e-07, 0.7071068)
+bones/31/position = Vector3(-0.17094503, -0.039185107, -0.07588267)
+bones/31/rotation = Quaternion(-0.40170765, -9.365701e-08, -3.7751125e-08, 0.9157681)
+bones/32/position = Vector3(1.9458106e-08, 0.36283264, -7.4505784e-09)
+bones/32/rotation = Quaternion(6.550326e-15, -1.3832107e-22, 1, -1.110223e-16)
+bones/33/position = Vector3(-1.114822e-08, 0.21343614, 5.363467e-09)
+bones/33/rotation = Quaternion(-1.0403524e-07, 0.39108434, 0.92035484, -2.952606e-08)
+bones/34/position = Vector3(8.5898915e-09, 0.16565005, -2.2673541e-08)
+bones/35/rotation = Quaternion(1, 8.8817577e-16, 1.947072e-07, 8.6467334e-23)
+bones/37/position = Vector3(0.45350754, 0.8811599, -0.8838762)
+bones/37/rotation = Quaternion(-0.7071068, -7.279511e-08, -7.279509e-08, 0.7071068)
+bones/38/position = Vector3(0.5131815, 0.8639796, -0.1778777)
+bones/38/rotation = Quaternion(0.6999967, 0.10002308, 0.6999967, 0.1000233)
+bones/39/position = Vector3(-0.45350713, 0.8811599, -0.88387644)
+bones/39/rotation = Quaternion(-0.7071068, -7.279511e-08, -7.279509e-08, 0.7071068)
+bones/40/position = Vector3(-0.5131816, 0.9420723, 0.21909343)
+bones/40/rotation = Quaternion(-0.5517425, 0.44224465, 0.5517423, -0.44224462)
+
+[node name="handslot_l" parent="Rig/Skeleton3D" index="0"]
+transform = Transform3D(3.5307468e-07, 5.736947e-07, 0.9999991, 0.95998067, 0.28006348, -8.50361e-08, -0.2800634, 0.95998085, -5.52618e-07, 0.51555115, 0.72977614, -0.14031264)
+
+[node name="Spellbook" parent="Rig/Skeleton3D/handslot_l" index="0"]
+visible = false
+
+[node name="Spellbook_open" parent="Rig/Skeleton3D/handslot_l" index="1"]
+visible = false
+
+[node name="handslot_r" parent="Rig/Skeleton3D" index="1"]
+transform = Transform3D(1.8916204e-07, -1.4901163e-07, -0.99999934, -0.21767856, 0.9760201, -1.1821819e-07, 0.9760195, 0.21767853, -1.5159279e-07, -0.49023563, 0.9121785, 0.37755555)
+
+[node name="2H_Staff" parent="Rig/Skeleton3D/handslot_r" index="1"]
+transform = Transform3D(-1.0000001, 2.6541335e-07, 8.742277e-08, 2.6541338e-07, 1, -8.742273e-08, -8.7422805e-08, -8.742271e-08, -0.99999994, 0, 3.7252903e-07, -1.1920929e-07)
+
+[node name="head" parent="Rig/Skeleton3D" index="2"]
+transform = Transform3D(1, 7.450581e-09, 1.9817037e-11, -1.6283107e-17, 1, -4.5362825e-10, -1.9818813e-11, 4.5362852e-10, 1, 0.032682363, 1.1946466, -6.9788134e-11)
+
+[node name="chest" parent="Rig/Skeleton3D" index="3"]
+transform = Transform3D(1, 7.450581e-09, 1.9817037e-11, -1.6283107e-17, 1, -4.5362825e-10, -1.9818813e-11, 4.5362852e-10, 1, 0.03268236, 0.92585003, -1.9172192e-10)
+
+[node name="Mage_Body" parent="Rig/Skeleton3D" index="6"]
+transform = Transform3D(0.9999738, 0.007243053, 0, -0.007243053, 0.9999738, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Idle"

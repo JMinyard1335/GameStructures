@@ -20,7 +20,8 @@ func execuate_next() -> void:
 	awaiting_execution = true
 	var c: Command = command_queue.peek() as Command
 	c.print()
-	c.execuate()
+	@warning_ignore("redundant_await")
+	await c.execuate()
 	print("execution Complete")
 	awaiting_execution = false
 	undo_queue.append( command_queue.pop())

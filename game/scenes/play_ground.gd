@@ -9,3 +9,7 @@ func _ready() -> void:
 	TileManager.init(gridmap)
 	if camera_rig:
 		camera_rig.set_pivot(character.position)
+
+
+func _process(delta: float) -> void:
+	camera_rig.set_pivot(character.position)

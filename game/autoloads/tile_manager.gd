@@ -28,9 +28,10 @@ func init(g: GridMap) -> void:
 		# TileGraph automatically makes the tiles based off a cell
 		tile_graph.add_vertex(cell)
 		
-		# Add edges to adjacent tiles
+	# Add edges to adjacent tiles
 		for neighbor in get_adjacent_cells(cell):
 			if tile_graph.graph.has(neighbor):
+				print("adding edge")
 				tile_graph.add_edge(cell, neighbor)
 			
 
